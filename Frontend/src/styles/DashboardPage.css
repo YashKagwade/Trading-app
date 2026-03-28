@@ -1,0 +1,664 @@
+.dashboard-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0e27 0%, #0f1322 100%);
+  color: #fff;
+}
+
+.dashboard-loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #0a0e27;
+  color: #fff;
+}
+
+.dashboard-loading .spinner-border {
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+}
+
+.dashboard-content {
+  display: flex;
+  height: calc(100vh - 56px);
+  overflow: hidden;
+}
+
+/* Left Sidebar - Coin List */
+.coin-sidebar {
+  width: 320px;
+  background: #111827;
+  border-right: 1px solid #2d3748;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.search-box {
+  border-bottom: 1px solid #2d3748;
+  background: #0f172a;
+}
+
+.search-box input {
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #fff;
+}
+
+.search-box input:focus {
+  background: #1e293b;
+  border-color: #6366f1;
+  box-shadow: none;
+}
+
+.coin-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.coin-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #1f2937;
+}
+
+.coin-item:hover {
+  background: #1e293b;
+}
+
+.coin-item.active {
+  background: #1e293b;
+  border-left: 3px solid #6366f1;
+}
+
+.coin-icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+}
+
+.coin-info {
+  flex: 1;
+}
+
+.coin-name {
+  font-weight: 500;
+  font-size: 14px;
+  color: #fff;
+}
+
+.coin-symbol {
+  font-size: 12px;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.coin-price {
+  text-align: right;
+}
+
+.price {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.price-change {
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.price-change.positive {
+  color: #10b981;
+}
+
+.price-change.negative {
+  color: #ef4444;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+}
+
+/* Coin Header */
+.coin-header {
+  margin-bottom: 24px;
+}
+
+.coin-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.large-coin-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.coin-title h1 {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0;
+  color: #fff;
+}
+
+.coin-title p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.watchlist-btn {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #fbbf24;
+  transition: transform 0.2s ease;
+  margin-left: auto;
+  padding: 8px;
+}
+
+.watchlist-btn:hover {
+  transform: scale(1.1);
+}
+
+.watchlist-btn.active {
+  color: #f59e0b;
+}
+
+.coin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 16px 20px;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.stat-value.positive {
+  color: #10b981;
+}
+
+.stat-value.negative {
+  color: #ef4444;
+}
+
+/* Timeframe Selector */
+.timeframe-selector {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.timeframe-btn {
+  padding: 8px 16px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.timeframe-btn:hover {
+  background: #2d3748;
+  color: #fff;
+}
+
+.timeframe-btn.active {
+  background: #6366f1;
+  border-color: #6366f1;
+  color: #fff;
+}
+
+/* Chart Container */
+.chart-container {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.chart-loading {
+  text-align: center;
+  padding: 40px;
+  color: #94a3b8;
+}
+
+/* Additional Stats */
+.additional-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+
+.stat-card-label {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-bottom: 8px;
+}
+
+.stat-card-value {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* Trading Panel */
+.trading-panel {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.trading-buttons {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.btn-buy, .btn-sell {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-buy {
+  background: #10b981;
+  color: #fff;
+}
+
+.btn-buy:hover {
+  background: #059669;
+}
+
+.btn-sell {
+  background: #ef4444;
+  color: #fff;
+}
+
+.btn-sell:hover:not(:disabled) {
+  background: #dc2626;
+}
+
+.btn-sell:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.holding-info h4 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: #94a3b8;
+}
+
+.holding-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.holding-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #334155;
+}
+
+.holding-item span {
+  color: #94a3b8;
+}
+
+.holding-item strong {
+  color: #fff;
+}
+
+.holding-item strong.positive {
+  color: #10b981;
+}
+
+.holding-item strong.negative {
+  color: #ef4444;
+}
+
+/* Right Sidebar - Market Overview */
+.market-sidebar {
+  width: 280px;
+  background: #111827;
+  border-left: 1px solid #2d3748;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.sidebar-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.market-stats {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 20px;
+}
+
+.market-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.market-stat-label {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.market-stat-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.top-movers {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mover-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  background: #1e293b;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mover-item:hover {
+  background: #2d3748;
+}
+
+.mover-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.mover-info {
+  flex: 1;
+}
+
+.mover-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.mover-change {
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.mover-change.positive {
+  color: #10b981;
+}
+
+.mover-change.negative {
+  color: #ef4444;
+}
+
+.mover-price {
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #1e293b;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #334155;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #fff;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #94a3b8;
+}
+
+.modal-close:hover {
+  color: #fff;
+}
+
+.modal-body {
+  padding: 24px;
+}
+
+.price-info, .total-info, .wallet-info, .holding-info-modal {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  background: #0f172a;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.price-info span, .total-info span, .wallet-info span {
+  color: #94a3b8;
+}
+
+.price-info strong, .total-info strong {
+  color: #6366f1;
+  font-size: 18px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #94a3b8;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #6366f1;
+}
+
+.modal-footer {
+  display: flex;
+  gap: 12px;
+  padding: 20px 24px;
+  border-top: 1px solid #334155;
+}
+
+.btn-secondary {
+  flex: 1;
+  padding: 10px;
+  background: #334155;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn-buy-modal {
+  flex: 1;
+  padding: 10px;
+  background: #10b981;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn-sell-modal {
+  flex: 1;
+  padding: 10px;
+  background: #ef4444;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .market-sidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-content {
+    flex-direction: column;
+  }
+  
+  .coin-sidebar {
+    width: 100%;
+    height: 300px;
+  }
+  
+  .main-content {
+    height: auto;
+  }
+  
+  .coin-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .additional-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .holding-details {
+    grid-template-columns: 1fr;
+  }
+}
+/* Add to DashboardPage.css */
+.load-more-container {
+  padding: 16px;
+  border-top: 1px solid #2d3748;
+}
+
+.load-more-container button {
+  background: #1e293b;
+  border: 1px solid #6366f1;
+  color: #6366f1;
+  transition: all 0.3s ease;
+}
+
+.load-more-container button:hover:not(:disabled) {
+  background: #6366f1;
+  color: #fff;
+}
+
+.load-more-container button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
